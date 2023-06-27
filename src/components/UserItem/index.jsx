@@ -8,15 +8,22 @@ const UserItem = ({ user }) => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [img, setImg] = useState(user.image);
-  const [showMenu, setMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showMenuToggle, setShowMenuToggle] = useState(true);
 
   const Delete = () => {
     dispatch(deleteUser(user.email));
   };
 
   const MenuToggle = (name) => {
-    setMenu(name === showMenu ? null : name);
+    setShowMenu(name === showMenu ? null : name);
+    setShowMenuToggle(false);
   };
+
+  const MenuTimes = (name) => {
+    setShowMenu(name === showMenu ? null : name);
+    setShowMenuToggle(true);
+  }
 
   const Edit = () => {
     if (editing) {
@@ -45,7 +52,7 @@ const UserItem = ({ user }) => {
           <img
             className="rounded-full w-full h-full object-cover"
             src={img}
-            alt=""
+            alt="img"
           />
         </div>
         {!editing ? (
@@ -109,25 +116,31 @@ const UserItem = ({ user }) => {
         </>
       ) : (
         <div>
-          <button className="mr-5 text-4xl" onClick={() => MenuToggle(name)}>
-            ...
-          </button>
-          {showMenu === name && (
+          {showMenu && (
             <>
               <button
                 className="ml-4 px-4 py-2 rounded bg-red-500 text-white"
                 onClick={Delete}
-              >
+                >
                 &times;
               </button>
               <button
-                className="ml-2 px-4 py-2 rounded bg-blue-500 text-white mr-6"
+                className="ml-2 px-4 py-2 rounded bg-blue-500 text-white mr-3"
                 onClick={Edit}
-              >
+                >
                 Edit
               </button>
             </>
           )}
+      {showMenuToggle ? (
+        <button className="mr-5 text-4xl" onClick={() => MenuToggle(name)}>
+          ...
+        </button>
+      ) : (
+        <button className="mr-4 text-4xl" onClick={() => MenuTimes(name)}>
+          &times;
+        </button>
+      )}
         </div>
       )}
     </div>
