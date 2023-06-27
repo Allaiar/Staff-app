@@ -89,22 +89,22 @@ const UserItem = ({ user }) => {
             </div>
           </div>
         ) : (
-          <div>
+          <div className="ml-4 mt-5">
             <input
               type="text"
-              className="border-b-2 border-gray-500 focus:outline-none mb-2"
+              className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-5 p-1"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <input
               type="text"
-              className="border-b-2 border-gray-500 focus:outline-none mb-2"
+              className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-5 p-1"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="text"
-              className="border-b-2 border-gray-500 focus:outline-none mb-2"
+              className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-5 p-1"
               value={img}
               onChange={(e) => setImg(e.target.value)}
             />

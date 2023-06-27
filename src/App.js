@@ -43,7 +43,7 @@ function App() {
   };
 
   return (
-    <div className="App border-2 border-bg-cyan-500 shadow-lg shadow-gray-500/50 max-w-7xl mx-auto mt-20 rounded-3xl pb-3">
+    <div className="App border-2 border-bg-cyan-500 shadow-lg shadow-gray-500/50 max-w-7xl mx-auto mt-10 rounded-3xl pb-3">
       <div className="flex justify-between gap-x-10 mt-8 mb-5 border-b-2 pb-4 px-9">
         <h1 className="font-bold text-2xl text-gray-600">Команда</h1>
         {showInputs ? (
@@ -94,7 +94,7 @@ function App() {
                   checked={permissions.includes("Модерация объявлений")}
                   onChange={PermissionChange}
                   className="h-5 w-5 mr-1"
-                  />
+                />
                 Модерация объявлений
               </label>
               <label className="text-xl font-medium text-gray-500">
@@ -168,6 +168,7 @@ function App() {
           </svg>
         )}
         <button
+          disabled={!name || !email || !img}
           className="bg-green-500 text-white w-56 h-12 rounded-2xl hover:bg-green-600 font-bold"
           onClick={AddUser}
         >
