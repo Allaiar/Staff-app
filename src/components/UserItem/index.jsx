@@ -55,9 +55,14 @@ const UserItem = ({ user }) => {
               <h3 className="text-gray-500 font-medium">{user.email}</h3>
             </div>
             <div className="ml-auto flex gap-x-1">
-            {
-                  user.permissions.map(permission => <div key={permission.id} className='border p-1 rounded-2xl text-gray-500 px-3 pb-1.5'>{permission}</div>)
-                }
+              {user.permissions.map((permission) => (
+                <div
+                  key={permission.id}
+                  className="border p-1 rounded-2xl text-gray-500 px-3 pb-1.5"
+                >
+                  {permission}
+                </div>
+              ))}
             </div>
           </div>
         ) : (
@@ -84,36 +89,47 @@ const UserItem = ({ user }) => {
         )}
       </div>
       {editing ? (
-  <>
-    {showMenu === name && (
-      <div>
-        <button className="ml-4 px-4 py-2 rounded bg-green-500 text-white" onClick={Edit}>
-          Save
-        </button>
-        <button className="ml-2 px-4 py-2 rounded bg-gray-500 text-white mr-6" onClick={Cancel}>
-          Cancel
-        </button>
-      </div>
-    )}
-  </>
-) : (
-  <div>
-    <button className="mr-5 text-4xl" onClick={() => MenuToggle(name)}>
-      ...
-    </button>
-    {showMenu === name && (
-      <>
-        <button className="ml-4 px-4 py-2 rounded bg-red-500 text-white" onClick={Delete}>
-          &times;
-        </button>
-        <button className="ml-2 px-4 py-2 rounded bg-blue-500 text-white mr-6" onClick={Edit}>
-          Edit
-        </button>
-      </>
-    )}
-  </div>
-)}
-
+        <>
+          {showMenu && (
+            <div>
+              <button
+                className="ml-4 px-4 py-2 rounded bg-green-500 text-white"
+                onClick={Edit}
+              >
+                Save
+              </button>
+              <button
+                className="ml-2 px-4 py-2 rounded bg-gray-500 text-white mr-6"
+                onClick={Cancel}
+              >
+                Cancel
+              </button>
+            </div>
+          )}
+        </>
+      ) : (
+        <div>
+          <button className="mr-5 text-4xl" onClick={() => MenuToggle(name)}>
+            ...
+          </button>
+          {showMenu === name && (
+            <>
+              <button
+                className="ml-4 px-4 py-2 rounded bg-red-500 text-white"
+                onClick={Delete}
+              >
+                &times;
+              </button>
+              <button
+                className="ml-2 px-4 py-2 rounded bg-blue-500 text-white mr-6"
+                onClick={Edit}
+              >
+                Edit
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };
