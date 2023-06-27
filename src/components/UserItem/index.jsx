@@ -89,34 +89,43 @@ const UserItem = ({ user }) => {
             </div>
           </div>
         ) : (
-          <div className="ml-4 mt-5">
-            <input
-              type="text"
-              className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-5 p-1"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              type="text"
-              className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-5 p-1"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="text"
-              className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-5 p-1"
-              value={img}
-              onChange={(e) => setImg(e.target.value)}
-            />
+          <div className="ml-4 flex">
+            <label className="font-bold">
+              Имя
+              <input
+                type="text"
+                className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-2 p-1"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label className="font-bold">
+              Email
+              <input
+                type="text"
+                className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-2 p-1"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+            <label className="font-bold">
+              Ссылка на фотографию
+              <input
+                type="text"
+                className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-2 p-1"
+                value={img}
+                onChange={(e) => setImg(e.target.value)}
+              />
+            </label>
           </div>
         )}
       </div>
       {editing ? (
         <>
           {showMenu && (
-            <div>
+            <div className="flex">
               <button
-                className="ml-4 px-4 py-2 rounded bg-green-500 text-white"
+                className="ml-2 px-4 py-2 rounded bg-green-500 text-white"
                 onClick={Edit}
               >
                 Сохранить
