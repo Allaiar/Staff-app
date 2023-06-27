@@ -168,7 +168,7 @@ function App() {
           </svg>
         )}
         <button
-          disabled={!name || !email || !img}
+          disabled={!name || !email}
           className="bg-green-500 text-white w-56 h-12 rounded-2xl hover:bg-green-600 font-bold"
           onClick={AddUser}
         >
