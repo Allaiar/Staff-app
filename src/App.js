@@ -86,58 +86,64 @@ function App() {
                 />
               </svg>
             </div>
-            <div className="flex gap-x-5">
-              <label>
+            <div className="flex gap-x-7 gap-y-2 flex-wrap">
+              <label className="text-xl font-medium text-gray-500">
                 <input
                   type="checkbox"
                   value="Модерация объявлений"
                   checked={permissions.includes("Модерация объявлений")}
                   onChange={PermissionChange}
-                />
-                Модерация объявлений{" "}
+                  className="h-5 w-5 mr-1"
+                  />
+                Модерация объявлений
               </label>
-              <label>
+              <label className="text-xl font-medium text-gray-500">
                 <input
                   type="checkbox"
                   value="Блог"
                   checked={permissions.includes("Блог")}
                   onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
                 />
                 Блог
               </label>
-              <label>
+              <label className="text-xl font-medium text-gray-500">
                 <input
                   type="checkbox"
                   value="Тех. поддержка"
                   checked={permissions.includes("Тех. поддержка")}
                   onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
                 />
                 Тех. поддержка
               </label>
-              <label>
+              <label className="text-xl font-medium text-gray-500">
                 <input
                   type="checkbox"
                   value="Обращения клиентов"
                   checked={permissions.includes("Обращения клиентов")}
                   onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
                 />
                 Обращения клиентов
               </label>
-              <label>
+              <label className="text-xl font-medium text-gray-500">
                 <input
                   type="checkbox"
                   value="Аналитика"
                   checked={permissions.includes("Аналитика")}
                   onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
                 />
                 Аналитика
               </label>
-              <label>
+              <label className="text-xl font-medium text-gray-500">
                 <input
                   type="checkbox"
                   value="Акции"
                   checked={permissions.includes("Акции")}
                   onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
                 />
                 Акции
               </label>

@@ -119,13 +119,13 @@ const UserItem = ({ user }) => {
                 className="ml-4 px-4 py-2 rounded bg-green-500 text-white"
                 onClick={Edit}
               >
-                Save
+                Сохранить
               </button>
               <button
                 className="ml-2 px-4 py-2 rounded bg-gray-500 text-white mr-6"
                 onClick={Cancel}
               >
-                Cancel
+                Назад
               </button>
             </div>
           )}
@@ -144,7 +144,7 @@ const UserItem = ({ user }) => {
                 className="ml-2 px-4 py-2 rounded bg-blue-500 text-white mr-3"
                 onClick={Edit}
               >
-                Edit
+                Изменить
               </button>
             </>
           )}
