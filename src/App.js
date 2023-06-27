@@ -8,7 +8,7 @@ function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [img, setImg] = useState("");
-  const [showInputs, setShowInputs] = useState(false); // Состояние для отображения инпутов
+  const [showInputs, setShowInputs] = useState(false);
 
   const dispatch = useDispatch();
   const users = useSelector(selectUsers);
@@ -49,27 +49,27 @@ function App() {
               className="border border-gray-300 rounded-md py-2 px-4 mb-4 h-10"
               type="text"
               placeholder="Image URL"
-              value={img}
+              value={users.img}
               onChange={(e) => setImg(e.target.value)}
             />
           </div>
         ) : (
           <svg
           style={{marginLeft:"760px",position:"relative" }}
-            onClick={() => setShowInputs(true)}
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-gray-600 mt-1 cursor-pointer"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
+          onClick={() => setShowInputs(true)}
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-8 w-8 text-gray-600 mt-2 cursor-pointer"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+          />
+        </svg>
         )}
         <button
           className="bg-green-500 text-white w-56 h-12 rounded-2xl hover:bg-green-600 font-bold"
@@ -80,7 +80,7 @@ function App() {
       </div>
       <div className="mx-auto px-3">
         {users.map((el) => (
-          <UserItem key={el.id} user={el} />
+          <UserItem key={el.id} user={el} {...el}/>
         ))}
       </div>
     </div>

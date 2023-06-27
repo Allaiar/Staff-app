@@ -10,6 +10,7 @@ const UserItem = ({ user }) => {
   const [img, setImg] = useState(user.image);
   const [showMenu, setShowMenu] = useState(false);
   const [showMenuToggle, setShowMenuToggle] = useState(true);
+  const [ava] = useState("https://cdn1.flamp.ru/07e1cd43a9e5be02947aa62e9bc48688.jpg")
 
   const Delete = () => {
     dispatch(deleteUser(user.email));
@@ -49,11 +50,21 @@ const UserItem = ({ user }) => {
     <div className="flex items-center mb-4 justify-between">
       <div className="flex">
         <div className="w-20 h-20 mr-4 ml-4">
-          <img
-            className="rounded-full w-full h-full object-cover"
-            src={img}
-            alt="img"
-          />
+        <div className="w-20 h-20 mr-4 ml-4">
+          {!img ? (
+            <img
+              className="rounded-full w-full h-full object-cover"
+              src={ava}
+              alt="img"
+            />
+          ) : (
+            <img
+              className="rounded-full w-full h-full object-cover"
+              src={img}
+              alt="img"
+            />
+          )}
+        </div>
         </div>
         {!editing ? (
           <div>
@@ -62,10 +73,10 @@ const UserItem = ({ user }) => {
               <h3 className="text-gray-500 font-medium">{user.email}</h3>
             </div>
             <div className="ml-auto flex gap-x-1">
-              {user.permissions.map((permission) => (
+            {user.permissions && user.permissions.map((permission) => (
                 <div
-                  key={permission.id}
                   className="border p-1 rounded-2xl text-gray-500 px-3 pb-1.5"
+                  key={permission}
                 >
                   {permission}
                 </div>
