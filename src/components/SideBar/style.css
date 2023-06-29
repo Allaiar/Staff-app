@@ -1,0 +1,29 @@
+.leftbar {
+  position: fixed;
+  left: 0;
+  top: -60px;
+  height: 100%;
+  width: 78px;
+  background: #fff;
+  padding: 0px 14px;
+  transition: all 0.2s;
+}
+.leftbar.leftbar-open {
+  width: 250px;
+}
+.links {
+    color: #9494a0;
+    font-size: 15px;
+    font-weight: 400;
+    opacity: 0;
+    transition: 0.2s;
+  }
+  .leftbar.leftbar-open li a .links {
+    opacity: 1;
+  }
+  ul{
+    margin-top:-40px;
+  }
+  .app.leftbar-open {
+    margin-left: 250px; /* Увеличьте отступ слева на 250 пикселей для уступа боковой панели */
+  }
