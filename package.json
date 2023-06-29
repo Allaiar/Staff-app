@@ -17,6 +17,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "json-server --watch db.json --port 8000",
+    "dev": "concurrently \"npm run server\" \"npm start\"",
     "watch": "npx tailwindcss -i ./src/index.css -o ./src/style.css --watch",
     "build": "npx tailwindcss -i ./src/index.css -o ./src/style.css",
     "test": "react-scripts test",

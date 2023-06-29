@@ -3,17 +3,17 @@ import  logo  from "../../assets/icons/logo.svg";
 import "./style.css";
 import "../../style.css"
 
-const SideBar = () => {
-  const [SidebarOpen, setSidebarOpen] = useState(false);
+const LeftBar = () => {
+  const [LeftbarOpen, setLeftbarOpen] = useState(false);
 
   return (
-    <div className={`leftbar ${SidebarOpen && "leftbar-open"}`}>
+    <div className={`leftbar ${LeftbarOpen && "leftbar-open"}`}>
       <div className="h-60 flex justify-center items-center relative cursor-pointer">
         <img
           className="h-10 w-auto"
           src={logo}
           alt="logo"
-          onClick={() => setSidebarOpen(!SidebarOpen)}
+          onClick={() => setLeftbarOpen(!LeftbarOpen)}
         />
       </div>
       <ul className="">
@@ -70,4 +70,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default LeftBar;

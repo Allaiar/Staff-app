@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./components/SideBar";
+import "./components/LeftBar";
 import UserItem from "./components/UserItem";
 import { getUsers, selectUsers, addUser } from "./redux/users/userSlice";
 import { useEffect, useState } from "react";
-import SideBar from "./components/SideBar";
+import SideBar from "./components/LeftBar";
 
 function App() {
   const [name, setName] = useState("");
@@ -38,6 +38,7 @@ function App() {
     };
     dispatch(addUser(userData));
     setShowInputs(false);
+    setImg("")
     setName("");
     setEmail("");
     setPermissions("");
@@ -180,7 +181,9 @@ function App() {
         </div>
         <div className="mx-auto px-3">
           {users.length <= 0 ? (
-            <h1 className="text-center font-bold text-4xl pb-10 pt-6 italic text-gray-400">Сотрудники отсутствуют!</h1>
+            <h1 className="text-center font-bold text-4xl pb-10 pt-6 italic text-gray-400">
+              Сотрудники отсутствуют!
+            </h1>
           ) : (
             users.map((el) => <UserItem key={el.id} user={el} {...el} />)
           )}

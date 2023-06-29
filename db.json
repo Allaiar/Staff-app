@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "image": "https://avatars.mds.yandex.net/i?id=2a20477db278a3e547cd6bd9b602a6e0-4897215-images-thumbs&n=13",
+      "name": "Иванов Петр",
+      "email": "petrivanov@gmail.com",
+      "permissions": ["Модерация объявлений", "Блог"]
+    },
+    {
+      "id": 2,
+      "image": "https://avatars.mds.yandex.net/i?id=eff77c03a4cd030108b50f89750484abed4cfcae-9243215-images-thumbs&n=13",
+      "name": "Сидорова Екатерина",
+      "email": "ekaterinasidorova@gmail.com",
+      "permissions": ["Тех. поддержка", "Обращения клиентов"]
+    },
+    {
+      "id": 3,
+      "image": "https://avatars.mds.yandex.net/i?id=ce17f2bff20e7c6779ff75872b493843bff60802-9456276-images-thumbs&n=13",
+      "name": "Новикова Анна",
+      "email": "annanovikova@gmail.com",
+      "permissions": ["Аналитика", "Акции"]
+    },
+    {
+      "id": 4,
+      "image": "https://avatars.mds.yandex.net/i?id=e786802c0e7b6a57f5f7cb27d38d6822-5233265-images-thumbs&n=13",
+      "name": "Кузнецов Дмитрий",
+      "email": "dmitrykuznetsov@gmail.com",
+      "permissions": ["Модерация объявлений", "Тех. поддержка"]
+    }
+  ]
+}
