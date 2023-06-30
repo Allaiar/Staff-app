@@ -32,7 +32,7 @@ function App() {
   const AddUser = (e) => {
     e.preventDefault();
     const userData = {
-      id: id,
+      id: Math.random().toString(),
       name: name,
       email: email,
       image: img,

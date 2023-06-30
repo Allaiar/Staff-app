@@ -16,7 +16,7 @@ const UserItem = ({ user }) => {
   );
 
   const Delete = () => {
-    dispatch(deleteUser(user.id));
+    dispatch(deleteUser(id));
   };
 
   const MenuToggle = (id) => {
@@ -32,7 +32,7 @@ const UserItem = ({ user }) => {
   const Edit = () => {
     if (editing) {
       const updatedUser = {
-        id: user.id,
+        id: id,
         name: name,
         email: email,
         image: img,
