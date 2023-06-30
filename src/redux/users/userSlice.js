@@ -1,8 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const api =
-  'http://localhost:8000/users';
+import usersService from "../services/usersService"
 
 const initialState = {
   users: [],
@@ -10,12 +7,11 @@ const initialState = {
   error: null,
 }
 
-export const getUsers = createAsyncThunk('getUsers', async () => {
+export const getUsers = createAsyncThunk('getUsers', async (_, thunkApi) => {
   try {
-    const response = await axios.get(api);
-    return response.data;
+    return usersService.getUsers();
   } catch (error) {
-    throw error;
+    return thunkApi.rejectWithValue(error.response.data);
   }
 })
 
@@ -27,11 +23,11 @@ export const deleteUser = createAsyncThunk('deleteUser', async (userEmail) => {
   }
 })
 
-export const addUser = createAsyncThunk('addUser', async (userData) => {
+export const addUser = createAsyncThunk('addUser', async (userData, thunkApi) => {
   try {
-    return userData
+    return usersService.addUser(userData);
   } catch (error) {
-    throw error;
+    return thunkApi.rejectWithValue(error.response.data);
   }
 })
 
@@ -43,7 +39,7 @@ export const editUser = createAsyncThunk('editUser', async (userData) => {
     }
   })
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {},
@@ -55,7 +51,7 @@ const userSlice = createSlice({
       })
       .addCase(getUsers.fulfilled, (state, action) => {
         state.loading = false;
-        state.users = [...action.payload];
+        state.users = action.payload;
       })
       .addCase(getUsers.rejected, (state, action) => {
         state.loading = false;
@@ -81,7 +77,6 @@ const userSlice = createSlice({
       })
       .addCase(addUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.users.push(action.payload);
       })
       .addCase(addUser.rejected, (state, action) => {
         state.loading = false;

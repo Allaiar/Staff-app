@@ -4,16 +4,26 @@ import { useDispatch } from "react-redux";
 
 const UserItem = ({ user }) => {
   const dispatch = useDispatch();
-  const [id, setId] = useState(user.id)
+  const [id, setId] = useState(user.id);
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [img, setImg] = useState(user.image);
   const [showMenu, setShowMenu] = useState(false);
   const [showMenuToggle, setShowMenuToggle] = useState(true);
+  const [permissions, setPermissions] = useState([]);
   const [ava] = useState(
     "https://cdn1.flamp.ru/07e1cd43a9e5be02947aa62e9bc48688.jpg"
   );
+
+  const PermissionChange = (e) => {
+    const value = e.target.value;
+    if (e.target.checked) {
+      setPermissions([...permissions, value]);
+    } else {
+      setPermissions(permissions.filter((item) => item !== value));
+    }
+  };
 
   const Delete = () => {
     dispatch(deleteUser(id));
@@ -36,6 +46,8 @@ const UserItem = ({ user }) => {
         name: name,
         email: email,
         image: img,
+        permissions,
+        permissions,
       };
       dispatch(editUser(updatedUser));
     }
@@ -43,7 +55,7 @@ const UserItem = ({ user }) => {
   };
 
   const Cancel = () => {
-    setId(user.id)
+    setId(user.id);
     setName(user.name);
     setEmail(user.email);
     setImg(user.image);
@@ -91,34 +103,98 @@ const UserItem = ({ user }) => {
             </div>
           </div>
         ) : (
-          <div className="ml-4 flex">
-            <label className="font-bold">
-              Имя
-              <input
-                type="text"
-                className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-2 p-1"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
-            <label className="font-bold">
-              Email
-              <input
-                type="text"
-                className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-2 p-1"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-            <label className="font-bold">
-              Ссылка на фотографию
-              <input
-                type="text"
-                className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-2 p-1"
-                value={img}
-                onChange={(e) => setImg(e.target.value)}
-              />
-            </label>
+          <div className="">
+            <div className="ml-4 flex">
+              <label className="font-bold">
+                Имя
+                <input
+                  type="text"
+                  className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-2 p-1"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+              <label className="font-bold">
+                Email
+                <input
+                  type="text"
+                  className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-2 p-1"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </label>
+              <label className="font-bold">
+                Ссылка на фотографию
+                <input
+                  type="text"
+                  className="border-2 border-gray-500 focus:outline-none text-md font-bold text-gray-600 mr-2 p-1"
+                  value={img}
+                  onChange={(e) => setImg(e.target.value)}
+                />
+              </label>
+            </div>
+            <div className="flex gap-x-3 gap-y-2 flex-wrap max-w-3xl mt-3 ml-4">
+              <label className="text-xl font-medium text-gray-500">
+                <input
+                  type="checkbox"
+                  value="Модерация объявлений"
+                  checked={permissions.includes("Модерация объявлений")}
+                  onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
+                />
+                Модерация объявлений
+              </label>
+              <label className="text-xl font-medium text-gray-500">
+                <input
+                  type="checkbox"
+                  value="Блог"
+                  checked={permissions.includes("Блог")}
+                  onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
+                />
+                Блог
+              </label>
+              <label className="text-xl font-medium text-gray-500">
+                <input
+                  type="checkbox"
+                  value="Тех. поддержка"
+                  checked={permissions.includes("Тех. поддержка")}
+                  onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
+                />
+                Тех. поддержка
+              </label>
+              <label className="text-xl font-medium text-gray-500">
+                <input
+                  type="checkbox"
+                  value="Обращения клиентов"
+                  checked={permissions.includes("Обращения клиентов")}
+                  onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
+                />
+                Обращения клиентов
+              </label>
+              <label className="text-xl font-medium text-gray-500">
+                <input
+                  type="checkbox"
+                  value="Аналитика"
+                  checked={permissions.includes("Аналитика")}
+                  onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
+                />
+                Аналитика
+              </label>
+              <label className="text-xl font-medium text-gray-500">
+                <input
+                  type="checkbox"
+                  value="Акции"
+                  checked={permissions.includes("Акции")}
+                  onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
+                />
+                Акции
+              </label>
+            </div>
           </div>
         )}
       </div>

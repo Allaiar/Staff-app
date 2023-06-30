@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./components/LeftBar";
 import UserItem from "./components/UserItem";
 import { getUsers, selectUsers, addUser } from "./redux/users/userSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback  } from "react";
 import SideBar from "./components/LeftBar";
 
 function App() {
@@ -29,22 +29,17 @@ function App() {
     dispatch(getUsers());
   }, [dispatch]);
 
-  const AddUser = (e) => {
-    e.preventDefault();
-    const userData = {
-      id: Math.random().toString(),
+  const AddUser = useCallback(() => {
+    const usersData = {
+      id: id,
       name: name,
       email: email,
       image: img,
       permissions: permissions,
     };
-    dispatch(addUser(userData));
+    dispatch(addUser(usersData));
     setShowInputs(false);
-    setImg("");
-    setName("");
-    setEmail("");
-    setPermissions("");
-  };
+  },[name, email, img, permissions, dispatch]);
 
   return (
     <div>
@@ -53,27 +48,24 @@ function App() {
         <div className="flex justify-between gap-x-4 mt-8 mb-5 border-b-2 pb-8 px-9">
           <h1 className="font-bold text-3xl text-gray-600 mt-2">Команда</h1>
           {showInputs ? (
-            <div className="mt-2 ml-5">
+            <div className="mt-2 ml-4">
               <div className="flex gap-x-4">
                 <input
-                  className="border border-gray-300 rounded-md py-2 px-4 mb-2 h-10 text-xs"
+                  className="border border-gray-300 rounded-md py-2 px-4 mb-2 h-10 text-md font-medium w-48"
                   type="text"
                   placeholder="Name"
-                  value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
                 <input
-                  className="border border-gray-300 rounded-md py-2 px-4 mb-2 h-10 text-xs"
+                  className="border border-gray-300 rounded-md py-2 px-4 mb-2 h-10 text-md font-medium w-48"
                   type="email"
                   placeholder="Email"
-                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
-                  className="border border-gray-300 rounded-md py-2 px-4 mb-4 h-10 text-xs"
+                  className="border border-gray-300 rounded-md py-2 px-4 mb-4 h-10 text-md font-medium w-48"
                   type="text"
                   placeholder="Image URL"
-                  value={users.img}
                   onChange={(e) => setImg(e.target.value)}
                 />
                 <svg
@@ -175,7 +167,7 @@ function App() {
           )}
           <button
             disabled={!name || !email}
-            className="bg-green-500 text-white w-56 h-12 rounded-2xl hover:bg-green-600 font-bold px-1"
+            className="bg-green-500 text-white min-w-fit h-12 rounded-2xl hover:bg-green-600 font-bold px-6"
             onClick={AddUser}
           >
             Добавить пользователя
@@ -187,7 +179,7 @@ function App() {
               Сотрудники отсутствуют!
             </h1>
           ) : (
-            users.map((el) => <UserItem key={el.id} user={el} {...el} />)
+           users && users.map((el) => <UserItem key={el.id} user={el} {...el} />)
           )}
         </div>
       </div>
