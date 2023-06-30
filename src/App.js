@@ -6,6 +6,7 @@ import { useEffect, useState, useCallback } from "react";
 import SideBar from "./components/LeftBar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [name, setName] = useState("");
@@ -31,7 +32,7 @@ function App() {
 
   const AddUser = useCallback(() => {
     const usersData = {
-      id: Math.random().toString(),
+      id: uuidv4(),
       name: name,
       email: email,
       image: img,

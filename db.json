@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "d0cf-4eaa-9e9d-e2258ccf0",
       "name": "Иванов Петр",
       "email": "petrivanov@gmail.com",
       "image": "https://avatars.mds.yandex.net/i?id=2a20477db278a3e547cd6bd9b602a6e0-4897215-images-thumbs&n=13",
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "f-4eaa-9e9d-",
       "image": "https://avatars.mds.yandex.net/i?id=eff77c03a4cd030108b50f89750484abed4cfcae-9243215-images-thumbs&n=13",
       "name": "Сидорова Екатерина",
       "email": "ekaterinasidorova@gmail.com",
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "9d-e2258ccf0ad0",
       "image": "https://avatars.mds.yandex.net/i?id=ce17f2bff20e7c6779ff75872b493843bff60802-9456276-images-thumbs&n=13",
       "name": "Новикова Анна",
       "email": "annanovikova@gmail.com",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "ccaaf694-d0cf-4eaa-9e9d-e225",
       "image": "https://avatars.mds.yandex.net/i?id=e786802c0e7b6a57f5f7cb27d38d6822-5233265-images-thumbs&n=13",
       "name": "Кузнецов Дмитрий",
       "email": "dmitrykuznetsov@gmail.com",
@@ -41,15 +41,16 @@
       ]
     },
     {
-      "name": "Аллаяр Раджапов",
+      "id": "ccaaf694-d0cf-4eaa-9e9d-e2258ccf0ad0",
+      "name": "Раджапов Аллаяр",
       "email": "radzhapov.allayar@gmail.com",
-      "image": "",
+      "image": "https://avatars.mds.yandex.net/i?id=6df550986a54710c0b6c110c1720f2881245ca3c-10303576-images-thumbs&n=13",
       "permissions": [
         "Тех. поддержка",
+        "Обращения клиентов",
         "Аналитика",
-        "Модерация объявлений"
-      ],
-      "id": 5
+        "Блог"
+      ]
     }
   ]
 }
