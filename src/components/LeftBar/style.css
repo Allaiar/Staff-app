@@ -8,7 +8,7 @@
   padding: 0px 14px;
   transition: all 0.2s;
 }
-.leftbar.leftbar-open {
+.leftbar.leftbar-open{
   width: 250px;
 }
 .links {
@@ -24,6 +24,6 @@
   ul{
     margin-top:-40px;
   }
-  .app.leftbar-open {
-    margin-left: 250px; /* Увеличьте отступ слева на 250 пикселей для уступа боковой панели */
+  .leftbar.leftbar-open .app {
+    margin-left: 250px; 
   }

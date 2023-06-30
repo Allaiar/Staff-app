@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 const UserItem = ({ user }) => {
   const dispatch = useDispatch();
+  const [id, setId] = useState(user.id)
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
@@ -15,16 +16,16 @@ const UserItem = ({ user }) => {
   );
 
   const Delete = () => {
-    dispatch(deleteUser(user.email));
+    dispatch(deleteUser(user.id));
   };
 
-  const MenuToggle = (name) => {
-    setShowMenu(name === showMenu ? null : name);
+  const MenuToggle = (id) => {
+    setShowMenu(id === showMenu ? null : id);
     setShowMenuToggle(false);
   };
 
-  const MenuTimes = (name) => {
-    setShowMenu(name === showMenu ? null : name);
+  const MenuTimes = (id) => {
+    setShowMenu(id === showMenu ? null : id);
     setShowMenuToggle(true);
   };
 
@@ -42,6 +43,7 @@ const UserItem = ({ user }) => {
   };
 
   const Cancel = () => {
+    setId(user.id)
     setName(user.name);
     setEmail(user.email);
     setImg(user.image);
@@ -160,14 +162,14 @@ const UserItem = ({ user }) => {
           {showMenuToggle ? (
             <button
               className="mr-5 text-4xl mb-10"
-              onClick={() => MenuToggle(name)}
+              onClick={() => MenuToggle(id)}
             >
               ...
             </button>
           ) : (
             <button
               className="mr-4 text-4xl mb-7"
-              onClick={() => MenuTimes(name)}
+              onClick={() => MenuTimes(id)}
             >
               &times;
             </button>

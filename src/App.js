@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import SideBar from "./components/LeftBar";
 
 function App() {
+  const [id, setId] = useState();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [img, setImg] = useState("");
@@ -31,6 +32,7 @@ function App() {
   const AddUser = (e) => {
     e.preventDefault();
     const userData = {
+      id: id,
       name: name,
       email: email,
       image: img,
@@ -38,7 +40,7 @@ function App() {
     };
     dispatch(addUser(userData));
     setShowInputs(false);
-    setImg("")
+    setImg("");
     setName("");
     setEmail("");
     setPermissions("");

@@ -68,7 +68,7 @@ const userSlice = createSlice({
       .addCase(deleteUser.fulfilled, (state, action) => {
         state.loading = false;
         state.users = state.users.filter(
-          (user) => user.email !== action.payload
+          (user) => user.id !== action.payload
         );
       })
       .addCase(deleteUser.rejected, (state, action) => {
@@ -95,7 +95,7 @@ const userSlice = createSlice({
         state.loading = false;
         const updatedUser = action.payload;
         const updatedUsers = state.users.map((user) => {
-          if (user.email === updatedUser.email) {
+          if (user.id === updatedUser.id) {
             return { ...user, ...updatedUser };
           }
           return user;
