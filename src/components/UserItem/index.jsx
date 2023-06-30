@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { deleteUser, editUser } from "../../redux/users/userSlice";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserItem = ({ user }) => {
   const dispatch = useDispatch();
@@ -11,7 +13,7 @@ const UserItem = ({ user }) => {
   const [img, setImg] = useState(user.image);
   const [showMenu, setShowMenu] = useState(false);
   const [showMenuToggle, setShowMenuToggle] = useState(true);
-  const [permissions, setPermissions] = useState([]);
+  const [permissions, setPermissions] = useState(user.permissions);
   const [ava] = useState(
     "https://cdn1.flamp.ru/07e1cd43a9e5be02947aa62e9bc48688.jpg"
   );
@@ -26,7 +28,8 @@ const UserItem = ({ user }) => {
   };
 
   const Delete = () => {
-    dispatch(deleteUser(id));
+    dispatch(deleteUser(user.id));
+    toast.info("Обновите страницу");
   };
 
   const MenuToggle = (id) => {
@@ -42,7 +45,7 @@ const UserItem = ({ user }) => {
   const Edit = () => {
     if (editing) {
       const updatedUser = {
-        id: id,
+        id: user.id,
         name: name,
         email: email,
         image: img,
@@ -59,12 +62,25 @@ const UserItem = ({ user }) => {
     setName(user.name);
     setEmail(user.email);
     setImg(user.image);
+    setPermissions(user.permissions)
     setEditing(false);
   };
 
   return (
     <div className="flex items-center mb-4 justify-between">
       <div className="flex">
+      <ToastContainer
+        position="top-right"
+        autoClose={6000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
         <div className="w-20 h-20 mr-4 ml-4">
           <div className="w-20 h-20 mr-4 ml-4">
             {!img ? (

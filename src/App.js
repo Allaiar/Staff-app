@@ -2,17 +2,17 @@ import { useDispatch, useSelector } from "react-redux";
 import "./components/LeftBar";
 import UserItem from "./components/UserItem";
 import { getUsers, selectUsers, addUser } from "./redux/users/userSlice";
-import { useEffect, useState, useCallback  } from "react";
+import { useEffect, useState, useCallback } from "react";
 import SideBar from "./components/LeftBar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [id, setId] = useState();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [img, setImg] = useState("");
   const [showInputs, setShowInputs] = useState(false);
   const [permissions, setPermissions] = useState([]);
-
   const dispatch = useDispatch();
   const users = useSelector(selectUsers);
 
@@ -31,7 +31,7 @@ function App() {
 
   const AddUser = useCallback(() => {
     const usersData = {
-      id: id,
+      id: Math.random().toString(),
       name: name,
       email: email,
       image: img,
@@ -39,14 +39,31 @@ function App() {
     };
     dispatch(addUser(usersData));
     setShowInputs(false);
-  },[name, email, img, permissions, dispatch]);
+    setName("");
+    setEmail("");
+    setImg("");
+    setPermissions("");
+    toast.info("Обновите страницу")
+  }, [name, email, img, permissions, dispatch]);
 
   return (
     <div>
       <SideBar />
+      <ToastContainer
+        position="top-right"
+        autoClose={6000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="app border-2 border-bg-cyan-500 shadow-lg shadow-gray-500/50 max-w-6xl mx-auto mt-10 rounded-3xl pb-3">
         <div className="flex justify-between gap-x-4 mt-8 mb-5 border-b-2 pb-8 px-9">
-          <h1 className="font-bold text-3xl text-gray-600 mt-2">Команда</h1>
+          <h1 className="font-bold text-3xl text-gray-600">Команда</h1>
           {showInputs ? (
             <div className="mt-2 ml-4">
               <div className="flex gap-x-4">
@@ -71,7 +88,7 @@ function App() {
                 <svg
                   onClick={() => setShowInputs(false)}
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-gray-600 mt-2 cursor-pointer"
+                  className="h-8 w-8 text-gray-600 cursor-pointer"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -149,10 +166,10 @@ function App() {
             </div>
           ) : (
             <svg
-              style={{ marginLeft: "560px" }}
+              style={{ marginLeft: "635px" }}
               onClick={() => setShowInputs(true)}
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 text-gray-600 mt-2 cursor-pointer"
+              className="h-8 w-8 text-gray-600 cursor-pointer mt-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -179,7 +196,8 @@ function App() {
               Сотрудники отсутствуют!
             </h1>
           ) : (
-           users && users.map((el) => <UserItem key={el.id} user={el} {...el} />)
+            users &&
+            users.map((el) => <UserItem key={el.id} user={el} {...el} />)
           )}
         </div>
       </div>

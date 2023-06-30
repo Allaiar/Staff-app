@@ -15,11 +15,11 @@ export const getUsers = createAsyncThunk('getUsers', async (_, thunkApi) => {
   }
 })
 
-export const deleteUser = createAsyncThunk('deleteUser', async (userEmail) => {
+export const deleteUser = createAsyncThunk('deleteUser', async (userData, thunkApi) => {
   try {
-    return userEmail
+    return usersService.deleteUser(userData);
   } catch (error) {
-    throw error;
+    return thunkApi.rejectWithValue(error.response.data);
   }
 })
 
@@ -31,12 +31,12 @@ export const addUser = createAsyncThunk('addUser', async (userData, thunkApi) =>
   }
 })
 
-export const editUser = createAsyncThunk('editUser', async (userData) => {
-    try {
-      return userData
-    } catch (error) {
-      throw error;
-    }
+export const editUser = createAsyncThunk('editUser', async (userData, thunkApi) => {
+  try {
+    return usersService.editUser(userData);
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.response.data);
+  }
   })
 
 export const userSlice = createSlice({

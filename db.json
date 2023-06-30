@@ -2,9 +2,9 @@
   "users": [
     {
       "id": 1,
-      "image": "https://avatars.mds.yandex.net/i?id=2a20477db278a3e547cd6bd9b602a6e0-4897215-images-thumbs&n=13",
       "name": "Иванов Петр",
       "email": "petrivanov@gmail.com",
+      "image": "https://avatars.mds.yandex.net/i?id=2a20477db278a3e547cd6bd9b602a6e0-4897215-images-thumbs&n=13",
       "permissions": [
         "Модерация объявлений",
         "Блог"
@@ -39,6 +39,17 @@
         "Модерация объявлений",
         "Тех. поддержка"
       ]
+    },
+    {
+      "name": "Аллаяр Раджапов",
+      "email": "radzhapov.allayar@gmail.com",
+      "image": "",
+      "permissions": [
+        "Тех. поддержка",
+        "Аналитика",
+        "Модерация объявлений"
+      ],
+      "id": 5
     }
   ]
 }
