@@ -7,6 +7,7 @@ import SideBar from "./components/LeftBar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from 'uuid';
+import "./style.css"
 
 function App() {
   const [name, setName] = useState("");
@@ -62,7 +63,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      <div className="app border-2 border-bg-cyan-500 shadow-lg shadow-gray-500/50 max-w-6xl mx-auto mt-10 rounded-3xl pb-3">
+      <div className="app-content border-2 border-bg-cyan-500 shadow-lg shadow-gray-500/50 max-w-6xl mx-auto mt-10 rounded-3xl pb-3">
         <div className="flex justify-between gap-x-4 mt-8 mb-5 border-b-2 pb-8 px-9">
           <h1 className="font-bold text-3xl text-gray-600">Команда</h1>
           {showInputs ? (

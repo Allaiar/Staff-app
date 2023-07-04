@@ -119,7 +119,7 @@ const UserItem = ({ user }) => {
             </div>
           </div>
         ) : (
-          <div className="">
+          <div>
             <div className="ml-4 flex">
               <label className="font-bold">
                 Имя
@@ -149,7 +149,7 @@ const UserItem = ({ user }) => {
                 />
               </label>
             </div>
-            <div className="flex gap-x-3 gap-y-2 flex-wrap max-w-3xl mt-3 ml-4">
+            <div className="flex gap-x-3 gap-y-2 flex-wrap max-w-2xl mt-3 ml-4">
               <label className="text-xl font-medium text-gray-500">
                 <input
                   type="checkbox"
@@ -163,22 +163,32 @@ const UserItem = ({ user }) => {
               <label className="text-xl font-medium text-gray-500">
                 <input
                   type="checkbox"
-                  value="Блог"
-                  checked={permissions.includes("Блог")}
-                  onChange={PermissionChange}
-                  className="h-5 w-5 mr-1"
-                />
-                Блог
-              </label>
-              <label className="text-xl font-medium text-gray-500">
-                <input
-                  type="checkbox"
                   value="Тех. поддержка"
                   checked={permissions.includes("Тех. поддержка")}
                   onChange={PermissionChange}
                   className="h-5 w-5 mr-1"
                 />
                 Тех. поддержка
+              </label>
+              <label className="text-xl font-medium text-gray-500">
+                <input
+                  type="checkbox"
+                  value="Акции"
+                  checked={permissions.includes("Акции")}
+                  onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
+                />
+                Акции
+              </label>
+              <label className="text-xl font-medium text-gray-500">
+                <input
+                  type="checkbox"
+                  value="Блог"
+                  checked={permissions.includes("Блог")}
+                  onChange={PermissionChange}
+                  className="h-5 w-5 mr-1"
+                />
+                Блог
               </label>
               <label className="text-xl font-medium text-gray-500">
                 <input
@@ -199,16 +209,6 @@ const UserItem = ({ user }) => {
                   className="h-5 w-5 mr-1"
                 />
                 Аналитика
-              </label>
-              <label className="text-xl font-medium text-gray-500">
-                <input
-                  type="checkbox"
-                  value="Акции"
-                  checked={permissions.includes("Акции")}
-                  onChange={PermissionChange}
-                  className="h-5 w-5 mr-1"
-                />
-                Акции
               </label>
             </div>
           </div>
